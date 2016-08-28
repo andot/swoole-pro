@@ -20,9 +20,8 @@ use Hprose\Promise;
 
 class Server {
     public $server;
-    public function __construct($host, $port, $mode = SWOOLE_PROCESS,
-            $socket_type = SWOOLE_SOCK_TCP) {
-        $this->server = new \Swoole\Server($host, $port, $mode, $socket_type);
+    public function __construct($server) {
+        $this->server = $server;
     }
     public function __call($name, $arguments) {
         return call_user_func_array(array($this, $name), $$arguments);
